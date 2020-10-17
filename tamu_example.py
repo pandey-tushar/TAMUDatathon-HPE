@@ -29,30 +29,23 @@ def main():
 # Make a dropdown select for states
     state_select = st.selectbox("State: ", state_list)
 
-# Filter data based on states and variable
-    st.write("Filter the data: ")
+# Filter data using selectbox
+
+    # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
+    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate"]
+    column_select = st.multiselect("Variable", column_list_short)
+
     if state_select == "All":
-        if st.checkbox("Poverty"):
-            st.write(df[["State", "Geographic School District", "% Poverty (SAIPE Estimate)"]])
-        if st.checkbox("Internet/Computer Access"):
-            st.write(df[["State", "Geographic School District", "% No Computer or Internet Estimate"]])
-        if st.checkbox("Vulnerable Jobs"):
-            st.write(df[["State", "Geographic School District", "% HHs With Vulnerable Job Estimate"]])
-        if st.checkbox("Single Parent Houshold"):
-            st.write(df[["State", "Geographic School District", "% Single Parent Estimate"]])
+        cols = ["State","Geographic School District"] + column_select
+        st.write(df[cols])
+
     else:
         new_df = df[(df.State == state_select)]
-        if st.checkbox("Poverty"):
-            st.write(new_df[["State", "Geographic School District", "% Poverty (SAIPE Estimate)"]])
-        if st.checkbox("Internet/Computer Access"):
-            st.write(new_df[["State", "Geographic School District", "% No Computer or Internet Estimate"]])
-        if st.checkbox("Vulnerable Jobs"):
-            st.write(new_df[["State", "Geographic School District", "% HHs With Vulnerable Job Estimate"]])
-        if st.checkbox("Single Parent Houshold"):
-            st.write(new_df[["State", "Geographic School District", "% Single Parent Estimate"]])
+        cols = ["Geographic School District"] + column_select
+        st.write(new_df[cols])
 
-column = st.selectbox("Select Column", list(df.columns))
-st.write(pd.pivot_table(df[["State", column]], index="State"))
+    column = st.selectbox("Select Column", list(df.columns))
+    st.write(pd.pivot_table(df[["State", column]], index="State"))
 
 main() 
 

@@ -44,7 +44,7 @@ def main():
         cols = ["Geographic School District"] + column_select
         st.write(new_df[cols])
 
-    column = st.selectbox("Select Column", list(df.columns))
+    column = st.selectbox("Select Column", column_list_short)
     st.write(pd.pivot_table(df[["State", column]], index="State"))
 
 main() 

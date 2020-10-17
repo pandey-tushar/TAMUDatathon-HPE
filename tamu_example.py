@@ -15,8 +15,18 @@ st.write(
     )
 st.write(df)
 
-st.write(
-    "Let's filter the data: "
-    )
+# Try out filtering the data and using a checkbox
 
-st.write(df[["State", "Geographic School District", "% Poverty (SAIPE Estimate)"]])
+st.write("Filter the data: ")
+
+if st.checkbox("Poverty"):
+    st.write(df[["State", "Geographic School District", "% Poverty (SAIPE Estimate)"]])
+elif st.checkbox("Internet/Computer Access"):
+    st.write(df[["State", "Geographic School District", "% No Computer or Internet Estimate"]])
+elif st.checkbox("Vulnerable Jobs"):
+    st.write(df[["State", "Geographic School District", "% HHs With Vulnerable Job Estimate"]])
+elif st.checkbox("Single Parent Houshold"):
+    st.write(df[["State", "Geographic School District", "% Single Parent Estimate"]])
+
+# Filter by state
+# working on this

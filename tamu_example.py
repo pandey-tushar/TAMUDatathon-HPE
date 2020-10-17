@@ -51,6 +51,9 @@ def main():
         if st.checkbox("Single Parent Houshold"):
             st.write(new_df[["State", "Geographic School District", "% Single Parent Estimate"]])
 
+column = st.selectbox("Select Column", list(df.columns))
+st.write(pd.pivot_table(df[["State", column]], index="State"))
+
 main() 
 
 

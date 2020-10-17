@@ -29,7 +29,7 @@ def main():
 # Make a dropdown select for states
     state_select = st.selectbox("State: ", state_list)
 
-# Filter data using selectbox
+# Filter data using multiselect
 
     # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
     column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate"]
@@ -44,7 +44,10 @@ def main():
         cols = ["Geographic School District"] + column_select
         st.write(new_df[cols])
 
-    column = st.selectbox("Select Column", list(df.columns))
+    
+    # Averages for each state using pivot tables
+    st.write("Averages for each state:")
+    column = st.selectbox("Select Column", column_list_short)
     st.write(pd.pivot_table(df[["State", column]], index="State"))
 
 main() 

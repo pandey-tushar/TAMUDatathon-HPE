@@ -38,6 +38,16 @@ def main():
     if state_select == "All":
         cols = ["State","Geographic School District"] + column_select
         st.write(df[cols])
+        
+        cols2 = ["State"] + column_list_short
+        df_state = 100*pd.pivot_table(df[cols2], index = 'State')
+        fig = go.Figure(data = [go.Bar(
+        x = list(df_state.index),
+        y = df_state[ele],
+        name = ele
+        ) for ele in df_state.columns])
+        fig.update_layout(barmode = 'group', width = 1200, height = 600)
+        st.plotly_chart(fig)
 
     else:
         new_df = df[(df.State == state_select)]

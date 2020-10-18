@@ -80,7 +80,8 @@ def main():
         if state_select == "All":
         
             cols = ["State","Geographic School District"] + column_select
-            st.write(df[cols])        
+        # removed dataframe because the user doesn't need it
+            #st.write(df[cols])        
             st.text(" \n")
             st.text(" \n")
             st.text(" \n")

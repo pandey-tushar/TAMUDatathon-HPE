@@ -17,13 +17,17 @@ That's why it's important to invest in these future community members and ensure
 
 ## Vulnerable Demographics 
 
-This app identifies four populations that are especially vulnerable due to COVID-19:
-	-**Students living in poverty** typically rely on school breakfast and lunch to receive their meals. Now that the students are forced
-	to stay home, they may not always have enough food.
-	-**Students without access to internet or a computer** cannot complete assignments or attend class online. These students will fall 
-	behind in school.
-	-**Students in homes with unstable jobs** have parents or guardians with a job hindered by COVID-19. Reasons for job vulnerability
+This app identifies four populations that are especially vulnerable due to COVID-19: 
+
+	- **Students living in poverty** typically rely on school breakfast and lunch to receive their meals. Now that the students are forced
+	to stay home, they may not always have enough food. 
+	
+	- **Students without access to internet or a computer** cannot complete assignments or attend class online. These students will fall 
+	behind in school. 
+	
+	- **Students in homes with unstable jobs** have parents or guardians with a job hindered by COVID-19. Reasons for job vulnerability
 	include inability to transition to remote work, business closures, and lay-offs. 
-	-**Students in single-parent homes** now require a parent, guardian, sibling, or babysitter to stay home with them. Single parents
+	
+	- **Students in single-parent homes** now require a parent, guardian, sibling, or babysitter to stay home with them. Single parents
 	might have difficulty staying home with their child if they cannot work from home. 
 

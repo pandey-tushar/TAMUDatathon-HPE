@@ -36,11 +36,15 @@ def main():
         "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate",
         "% Single Parent Estimate"]
         column_list_svi = ["Student Vulnerability Index"] + column_list_short
-        st.write("# What HPE Can Do")
         
         #st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
         st.write("## Student Vulnerability Index:")
         st.write("These are the districts with the highest vulnerability to the effects of COVID-19. The SVI is a value scaled on the percentages across each vulnerable demographic, ranging 0 (no needs) to 1 (high needs).")
+        st.write("# What HPE Can Do ")
+        
+        #st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
+        st.write("## Student Vulnerability Index:")
+        st.write("These are the districts with the highest needs right now. The SVI is a value scaled on the percentages across each vulnerable demographic, ranging from 0 (no needs) to 1 (high needs).")
         #column = st.selectbox("Choose Demographic", column_list_svi)
         st.write(pd.pivot_table(df[['Geographic School District', "Student Vulnerability Index"]], index='Geographic School District').sort_values(by="Student Vulnerability Index", ascending=False))
         st.text(" \n")
@@ -49,8 +53,17 @@ def main():
         st.text(" \n")
         st.text(" \n")
         st.text(" \n")
-        st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
-
+        st.write("## Interventions")
+        st.write(
+            "Below are the suggested actions HPE can take to assist community members in target areas:")
+        
+        st.write(
+            "* __Poverty__: facilitate meals for low-income families, or encourage business partners to donate to local food pantries"
+            )
+        st.write("* __No Internet Access__: provide schools with technology to support students while at home")
+        st.write("* __Job Instability__: donate to funds for parents of K-12 students")
+        st.write("* __Single-Parent Families__: encourage business partners to provide child care or transition parents to remote work")
+        st.write("### HPE believes in investing in the community. Let's commit to our students and beat this pandemic together")
     if nav == "Purpose":
         img = Image.open("covid_students_teacher.jpg")
         st.image(img, width=300)

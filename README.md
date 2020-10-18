@@ -31,7 +31,10 @@ This app identifies four populations that are especially vulnerable due to COVID
 ## Files
 
 The files here include 
-1. District_data_School - python notebook wchich does the data exploration, finds some interesting insights about relation to vulnerability among students and the ongoing COVID cases. It also has different set of graphs and a javascript object through which one can see relation between different data points.
+1. District_data_School - python notebook wchich does the data exploration, finds some interesting insights about relation to vulnerability among students and the ongoing COVID cases. 
+It also has different set of graphs and a javascript object through which one can see relation between different data points.
+One can also see some numbers related to the cost of shipping items from HPE offices to the most vulnerable schools. 
+
 2. covid_students_teacher - An Image file for the logo. 
 3. hpe_students.py - The python script used for creating the webpage. This includes "streamlit" library.
 

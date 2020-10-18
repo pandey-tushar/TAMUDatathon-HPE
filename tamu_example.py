@@ -53,6 +53,25 @@ def main():
         new_df = df[(df.State == state_select)]
         cols = ["Geographic School District"] + column_select
         st.write(new_df[cols])
+        
+        #A lot of datapoints in the bar plot
+        fig1 =  go.Figure(data = [go.Bar(
+        x = new_df[cols[0]],
+        y = 100*new_df[ele],
+        name = ele
+        ) for ele in column_list_short])
+        fig1.update_layout(barmode = 'group', width = 1200, height = 600)
+        st.plotly_chart(fig1)
+
+        fig2 = go.Figure()
+        for i in range(4):
+            fig2.add_trace(go.Box(
+            y = 100*new_df[column_list_short[i]],
+            name = column_list_short[i],
+            boxpoints = 'all',
+            boxmean = True
+            ))
+        fig2.show()
 
     
     # Averages for each state using pivot tables

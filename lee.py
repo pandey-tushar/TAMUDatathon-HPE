@@ -6,17 +6,13 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-# @st.cache
+@st.cache
 def loadData():
     return pd.read_excel("https://urban-data-catalog.s3.amazonaws.com/drupal-root-live/2020/06/08/NHGIS_District_data.xlsx")
 
 def main():
     df = loadData()
-<<<<<<< HEAD
-    df['svi'] = df['% Poverty (SAIPE Estimate)'] * df['% HHs With Vulnerable Job Estimate'] * df['% No Computer or Internet Estimate']
-=======
-    df['svi'] = df["% Poverty (SAIPE Estimate)"] * df["% HHs With Vulnerable Job Estimate"] * df["% No Computer or Internet Estimate"]
->>>>>>> 0dac97e0f35ce8c6b2833ca46426291a6902a5c7
+    
     st.title("TAMU Datathon")
 
     st.write(
@@ -36,7 +32,7 @@ def main():
 # Filter data using multiselect
 
     # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
-    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate", "svi"]
+    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate"]
     column_select = st.multiselect("Variable", column_list_short)
     import plotly.graph_objects as go
     if state_select == "All":

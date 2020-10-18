@@ -88,6 +88,9 @@ def main():
 
     if nav == 'Visualization':
         st.title("Visualizations")
+        st.text(" \n")
+        st.text(" \n")
+        st.text(" \n")
         st.header("Choose a state or any variable below")
         min_max_scaler = preprocessing.MinMaxScaler()
         svi = min_max_scaler.fit_transform(df[['% Poverty (SAIPE Estimate)',
@@ -125,15 +128,15 @@ def main():
             st.text(" \n")
             st.text(" \n")
             st.text(" \n")
-            st.text(" \n")
-            st.text(" \n")
-            st.text(" \n")
-            num_or_perc = st.selectbox("Would you like Population Numbers or Percentages?",
+            num_or_perc = st.selectbox("Choose between Population Numbers or Percentages",
             ['Percentage', 'Numbers'])
             cols2 = ["State"] + column_list_short
 
             st.text(" \n")
-            st.write('Click on the legend to select a variable. \n Click and drag on the graph to zoom in.')
+            st.text(" \n")
+            st.text(" \n")
+            st.text(" \n")
+            st.header('Click on the legend to select a variable. \n Click and drag on the graph to zoom in.')
             st.text(" \n")
             st.text(" \n")
             if num_or_perc == 'Percentage':            

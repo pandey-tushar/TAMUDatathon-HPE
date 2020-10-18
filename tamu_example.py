@@ -41,7 +41,7 @@ def main():
         st.write(df[cols])        
         
         num_or_perc = st.selectbox("Do you want numbers or percentage?",
-         ['Numbers', 'Percentage'])
+         ['Percentage', 'Numbers'])
         cols2 = ["State"] + column_list_short
         if num_or_perc == 'Percentage':            
             df_state = 100*pd.pivot_table(df[cols2], index = 'State')
@@ -85,6 +85,7 @@ def main():
             boxpoints = 'all',
             boxmean = True
             ))
+        fig2.update_layout(barmode = 'group', width = 1200, height = 600)
         st.plotly_chart(fig2)
 
     

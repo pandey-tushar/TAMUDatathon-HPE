@@ -1,4 +1,3 @@
-# TAMUDatathon-HPE
 
 # COVID-19 Impact on K-12 Students 
 

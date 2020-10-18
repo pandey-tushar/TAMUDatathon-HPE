@@ -38,3 +38,5 @@ The files here include
 You will see that with not so large datasets, a lot of information can be processed and meaningful insights can be drawn. The project is a little more than just data analysis. It's finding a real world problem and trying to look at some possible solutions to efficiently make US school education system more robust and equal for everyone. 
 
 Here is the link to the web app: http://ec2-13-59-13-166.us-east-2.compute.amazonaws.com:8501/
+
+Collaborators : May K, Lee Rainwater, Myranda Uselton and me!

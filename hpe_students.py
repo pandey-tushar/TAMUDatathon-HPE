@@ -129,7 +129,7 @@ def main():
             st.text(" \n")
             st.text(" \n")
             st.text(" \n")
-            num_or_perc = st.selectbox("Choose between Population Numbers or Percentages",
+            num_or_perc = st.selectbox("Select either Population Numbers or Percentages",
             ['Percentage', 'Numbers'])
             cols2 = ["State"] + column_list_short
 

@@ -8,6 +8,7 @@ import pandas as pd
 from sklearn import preprocessing
 import dash
 import dash_table
+from PIL import Image
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -51,6 +52,8 @@ def main():
         st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
 
     if nav == "Purpose":
+        img = Image.open("covid_students_teacher.jpg")
+        st.image(img, width=300)
         
         st.title("COVID-19 Impact on K-12 Students")
         st.write("All around the world, K-12 students are adapting to the changes put in place by COVID-19. Schools are now conducted online, meaning that students are increasingly reliant on the resources available at home. Students at a significant disadvantage include those from low-income housholds, without access to home internet, with parents suffering from job instability, and in single-parent homes. HPE is committed to making a positive impact on the community and knows firsthand the advantage technology can provide. This data visualization tool uses a dataset from the Urban Institute to compare the percentages of students in each state living in poverty, without internet access, in homes with job instability, and living with a single parent. Each of these targeted communities needs extra support during the pandemic, and HPE has the resources to make a difference.")

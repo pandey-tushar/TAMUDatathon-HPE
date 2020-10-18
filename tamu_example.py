@@ -5,14 +5,22 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+from sklearn import preprocessing
 
-# @st.cache
+@st.cache(allow_output_mutation=True)
 def loadData():
     return pd.read_excel("https://urban-data-catalog.s3.amazonaws.com/drupal-root-live/2020/06/08/NHGIS_District_data.xlsx")
 
 def main():
     df = loadData()
-    df['svi'] = df['% Poverty (SAIPE Estimate)'] * df['% HHs With Vulnerable Job Estimate'] * df['% No Computer or Internet Estimate']
+    # df['Student Vulnerability Index'] = df['% Poverty (SAIPE Estimate)'] * \
+    #     df['% HHs With Vulnerable Job Estimate'] * \
+    #         df['% No Computer or Internet Estimate']
+    min_max_scaler = preprocessing.MinMaxScaler()
+    svi = min_max_scaler.fit_transform(df[['% Poverty (SAIPE Estimate)',
+    '% HHs With Vulnerable Job Estimate','% No Computer or Internet Estimate']].values).sum(axis = 1)/3
+    df['Student Vulnerability Index'] = svi
+
     st.title("TAMU Datathon")
 
     st.write(
@@ -32,7 +40,10 @@ def main():
 # Filter data using multiselect
 
     # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
-    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate", "svi"]
+    column_list_short = ["Student Vulnerability Index", 
+    "% Poverty (SAIPE Estimate)", 
+    "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate",
+    "% Single Parent Estimate"]
     column_select = st.multiselect("Variable", column_list_short)
     import plotly.graph_objects as go
     if state_select == "All":
@@ -89,9 +100,9 @@ def main():
 
     
     # Averages for each state using pivot tables
-    st.write("Averages for each state:")
+    st.write("Most Vulnerable Districts:")
     column = st.selectbox("Select Column", column_list_short)
-    st.write(pd.pivot_table(df[["State", column]], index="State"))
+    st.write(pd.pivot_table(df[['Geographic School District', column]], index='Geographic School District').sort_values(by=column, ascending=False))
 
 main() 
 

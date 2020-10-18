@@ -26,7 +26,7 @@ def main():
     st.write(
         "Here is the data: "
         )
-    st.write(df)
+    # st.write(df)
 
     # Try out filtering the data and using a checkbox
 

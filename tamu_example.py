@@ -82,7 +82,6 @@ def main():
             fig2.add_trace(go.Box(
             y = 100*new_df[column_list_short[i]],
             name = column_list_short[i],
-            boxpoints = 'all',
             boxmean = True
             ))
         fig2.update_layout(barmode = 'group', width = 1200, height = 600)

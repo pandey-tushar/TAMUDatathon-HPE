@@ -71,10 +71,10 @@ def main():
 # Filter data using multiselect
 
     # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
-        column_list_short = ["Student Vulnerability Index", 
-        "% Poverty (SAIPE Estimate)", 
+        column_list_short = ["% Poverty (SAIPE Estimate)", 
         "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate",
         "% Single Parent Estimate"]
+        column_list_svi = ["Student Vulnerability Index"] + column_list_short
         column_select = st.multiselect("Variable", column_list_short)
         import plotly.graph_objects as go
         if state_select == "All":
@@ -87,7 +87,7 @@ def main():
             st.text(" \n")
             st.text(" \n")
             st.text(" \n")
-            num_or_perc = st.selectbox("Would you like Numbers or Percentages?",
+            num_or_perc = st.selectbox("Would you like Population Numbers or Percentages?",
             ['Percentage', 'Numbers'])
             cols2 = ["State"] + column_list_short
             if num_or_perc == 'Percentage':            
@@ -144,15 +144,16 @@ def main():
             st.plotly_chart(fig2)
 
     
-    # Averages for each state using pivot tables
+    # Student Vulnerability Index
         st.text(" \n")
         st.text(" \n")
         st.text(" \n")
         st.text(" \n")
         st.text(" \n")
         st.text(" \n")
-        st.write("Most Vulnerable Districts:")
-        column = st.selectbox("Select Column", column_list_short)
+        st.write("## Student Vulnerability Index:")
+        st.write("These are the districts with the highest needs right now. The SVI is a value scaled on the percentages across each vulnerable demographic, ranging 0 (no needs) to 1 (high needs).")
+        column = st.selectbox("Choose Demographic", column_list_svi)
         st.write(pd.pivot_table(df[['Geographic School District', column]], index='Geographic School District').sort_values(by=column, ascending=False))
        
 main() 

@@ -12,7 +12,7 @@ def loadData():
 
 def main():
     df = loadData()
-    df[svi] = df["% Poverty (SAIPE Estimate)"] * df["% HHs With Vulnerable Job Estimate"] * df["No Computer or Internet Estimate"]
+    df[svi] = df["% Poverty (SAIPE Estimate)"] * df["% HHs With Vulnerable Job Estimate"] * df["% No Computer or Internet Estimate"]
     st.title("TAMU Datathon")
 
     st.write(

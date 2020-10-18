@@ -36,9 +36,11 @@ def main():
     column_select = st.multiselect("Variable", column_list_short)
 
     if state_select == "All":
+        
         cols = ["State","Geographic School District"] + column_select
         st.write(df[cols])
         
+        import plotly.graph_objects as go
         cols2 = ["State"] + column_list_short
         df_state = 100*pd.pivot_table(df[cols2], index = 'State')
         fig = go.Figure(data = [go.Bar(
@@ -50,10 +52,12 @@ def main():
         st.plotly_chart(fig)
 
     else:
+        
         new_df = df[(df.State == state_select)]
         cols = ["Geographic School District"] + column_select
         st.write(new_df[cols])
         
+        import plotly.graph_objects as go
         #A lot of datapoints in the bar plot
         fig1 =  go.Figure(data = [go.Bar(
         x = new_df[cols[0]],

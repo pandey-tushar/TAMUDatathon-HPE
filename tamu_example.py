@@ -6,13 +6,13 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-@st.cache
+# @st.cache
 def loadData():
     return pd.read_excel("https://urban-data-catalog.s3.amazonaws.com/drupal-root-live/2020/06/08/NHGIS_District_data.xlsx")
 
 def main():
     df = loadData()
-    df[svi] = df["% Poverty (SAIPE Estimate)"] * df["% HHs With Vulnerable Job Estimate"] * df["No Computer or Internet Estimate"]
+    df['svi'] = df['% Poverty (SAIPE Estimate)'] * df['% HHs With Vulnerable Job Estimate'] * df['% No Computer or Internet Estimate']
     st.title("TAMU Datathon")
 
     st.write(
@@ -91,7 +91,7 @@ def main():
     # Averages for each state using pivot tables
     st.write("Averages for each state:")
     column = st.selectbox("Select Column", column_list_short)
-    st.write(pd.pivot_table(df[["State", column*100]], index="State"))
+    st.write(pd.pivot_table(df[["State", column]], index="State"))
 
 main() 
 

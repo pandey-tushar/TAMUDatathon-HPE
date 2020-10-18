@@ -9,6 +9,7 @@ from sklearn import preprocessing
 import dash
 import dash_table
 from PIL import Image
+import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -36,12 +37,8 @@ def main():
         "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate",
         "% Single Parent Estimate"]
         column_list_svi = ["Student Vulnerability Index"] + column_list_short
-        
-        #st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
-        st.write("## Student Vulnerability Index:")
-        st.write("These are the districts with the highest vulnerability to the effects of COVID-19. The SVI is a value scaled on the percentages across each vulnerable demographic, ranging 0 (no needs) to 1 (high needs).")
-        st.write("# What HPE Can Do ")
-        
+        st.title("What HPE Can Do")
+
         #st.write(""" *For low-income students/homes with job instability*:   some of these students relied on school breakfast and lunch programs for food. HPE can help these students by providing meals. *For single-parent homes*: School from home means single parents have to remain at home with their kids or find a babysitter. HPE can help this demographic by investing in child care or providing easier ways for single parents to transition to working from home For no internet access: These students need the internet to complete school. HPE can help set up local hotspots for students or donate technology to schools in need""" )
         st.write("## Student Vulnerability Index:")
         st.write("These are the districts with the highest needs right now. The SVI is a value scaled on the percentages across each vulnerable demographic, ranging from 0 (no needs) to 1 (high needs).")
@@ -137,6 +134,8 @@ def main():
 
             st.text(" \n")
             st.write('Click on the legend to select a variable. \n Click and drag on the graph to zoom in.')
+            st.text(" \n")
+            st.text(" \n")
             if num_or_perc == 'Percentage':            
                 df_state = 100*pd.pivot_table(df[cols2], index = 'State')
                 fig = go.Figure(data = [go.Bar(
@@ -145,7 +144,16 @@ def main():
                 name = ele,
                 ) for ele in df_state.columns])
                 fig.update_layout(barmode = 'group', width = 1200, height = 600, title=" State vs. Average Percent")
+                fig.update_layout(
+                margin=dict(l=20, r=20, t=50, b=20),
+                  font=dict(
+            
+                size=20,
+                color="black"
+        ),
                 
+                )
+
                 fig.update_xaxes(title_text='State')
                 fig.update_yaxes(title_text='Average Percent')
                 st.plotly_chart(fig)

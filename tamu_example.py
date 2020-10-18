@@ -12,7 +12,7 @@ def loadData():
 
 def main():
     df = loadData()
-    
+    df[svi] = df['% Poverty (SAIPE Estimate)'] * df['% HHs With Vulnerable Job Estimate'] * df['No Computer or Internet Estimate']
     st.title("TAMU Datathon")
 
     st.write(
@@ -32,7 +32,7 @@ def main():
 # Filter data using multiselect
 
     # The columns we're interested in for this project: poverty, access to computer/internet, vulnerable jobs, and single parent
-    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate"]
+    column_list_short = ["% Poverty (SAIPE Estimate)", "% No Computer or Internet Estimate", "% HHs With Vulnerable Job Estimate","% Single Parent Estimate", "svi"]
     column_select = st.multiselect("Variable", column_list_short)
     import plotly.graph_objects as go
     if state_select == "All":
@@ -91,7 +91,7 @@ def main():
     # Averages for each state using pivot tables
     st.write("Averages for each state:")
     column = st.selectbox("Select Column", column_list_short)
-    st.write(pd.pivot_table(df[["State", column]], index="State"))
+    st.write(pd.pivot_table(df[["State", column*100]], index="State"))
 
 main() 
 
